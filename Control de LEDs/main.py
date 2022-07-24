@@ -2,7 +2,6 @@
 # @autor: Magno Efren
 # Youtube: https://www.youtube.com/c/MagnoEfren
 
-
 import sys
 from control_leds import *
 from comunicacion_serial import Comunicacion
@@ -38,21 +37,16 @@ class MiApp(QMainWindow):
 
 
 	def  slider1_pwm(self, event):
-
 		self.ui.slider1.setValue(event)
 		self.ui.valor1.setText(str(event))
 		self.nivelpwm1 = event
-
 		dato = (self.nivelpwm1 , self.nivelpwm2, ')))))')
 		self.serial.enviar_datos(dato)
 
-
-	def slider2_pwm(self, event):
-			
+	def slider2_pwm(self, event):			
 		self.ui.slider2.setValue(event)
 		self.ui.valor2.setText(str(event))
 		self.nivelpwm2 = event
-
 		dato = (self.nivelpwm1 , self.nivelpwm2, ')))))')
 		self.serial.enviar_datos(dato)
 
@@ -74,9 +68,8 @@ class MiApp(QMainWindow):
 		else:
 			self.led2 = 'd'
 			dato = (self.led2)
-			self.serial.enviar_datos(dato)			
-
-
+			self.serial.enviar_datos(dato)	
+			
 	def conectar(self):		
 		port = self.ui.puertos.currentText()   
 		baud = self.ui.velocidad.currentText()   
@@ -90,8 +83,7 @@ class MiApp(QMainWindow):
 	def puertos_disponible(self):
 		self.serial.puertos_disponibles()
 		self.ui.puertos.clear()
-		self.ui.puertos.addItems(self.serial.puertos)
-		
+		self.ui.puertos.addItems(self.serial.puertos)		
 
 if __name__ == "__main__":
      app = QApplication(sys.argv)
